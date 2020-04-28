@@ -17,19 +17,19 @@ import time
 
 class TrafficLight:
 
-    color = "красный"
+    _color = "красный"
 
     def running(self):
         while True:
-            print(TrafficLight.color)
+            print(TrafficLight._color)
             time.sleep(7)
-            TrafficLight.color = "желтый"
-            print(TrafficLight.color)
+            TrafficLight._color = "желтый"
+            print(TrafficLight._color)
             time.sleep(2)
-            TrafficLight.color = "зеленый"
-            print(TrafficLight.color)
+            TrafficLight._color = "зеленый"
+            print(TrafficLight._color)
             time.sleep(5)
-            TrafficLight.color = "красный"
+            TrafficLight._color = "красный"
 
 exhibit = TrafficLight()
 a = exhibit.running()
