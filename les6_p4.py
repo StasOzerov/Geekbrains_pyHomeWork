@@ -36,6 +36,8 @@ class Car:
 
 
 class TownCar(Car):
+    def __init__(self, speed: int, color: str, name: str, is_police: bool):
+        super().__init__(speed, color, name, is_police)
     def hello(self):
         print("Родительский метод класса TownCar")
     def show_speed(self):
@@ -65,23 +67,28 @@ class PoliceCar(Car):
         print("Родительский метод класса PoliceCar")
 
 
+c = Car(36, "magenda", "Golf", False)
+c.speed = 60
+print(c.speed)
+
+
+
 town = TownCar(61, "white", "Audi", False)
 town.hello()
 town.go()
-town.stop()
 town.stop()
 town.show_speed()
 town.turn('right')
 print(town._count)
 
-# town.speed(50)  # не получается (
-# town.show_speed()
+
+town.speed = 50
+town.show_speed()
 
 
 Sport = SportCar(250, "red", "Ferrari", False)
 Sport.hello()
 Sport.go()
-Sport.stop()
 Sport.stop()
 Sport.show_speed()
 Sport.turn('right')
@@ -91,7 +98,6 @@ print(town._count)
 Work = WorkCar(35, "blue", "Honda", False)
 Work.hello()
 Work.go()
-Work.stop()
 Work.stop()
 Work.show_speed()
 Work.turn('right')
