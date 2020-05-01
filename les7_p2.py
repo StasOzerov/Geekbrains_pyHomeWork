@@ -42,16 +42,24 @@ class Coat(Dress):
     def object_info(self):
         print('Тип одежды - пальто.')
 
-    def __init__(self, v):
-        if isinstance(v, (int, float)) is False or v < 0:
-            raise ValueError
-        self.v = v
+    def __init__(self):
+        self.v = 0
 
-    def calc(self):
-        return self.v/6.5 + 0.5
+    @property
+    def dress_size(self):
+        return self.v
+
+    @dress_size.setter
+    def dress_size(self, v):
+        if isinstance(v, (int, float)) is False or v < 0:
+            raise ValueError('Некорректные данные!')
+        self.v = v
 
     def __str__(self):
         return f'Пальто. Расход: {self.calc():>.2f} кв. м.'
+
+    def calc(self):
+        return self.v/6.5 + 0.5
 
     def calc_print(self):
         return f'Расход {self.calc():>.2f} кв.м для размера {self.v}\n'
@@ -62,28 +70,38 @@ class Suit(Dress):
     def object_info(self):
         print('Тип одежды - костюм.')
 
-    def __init__(self, h):
-        if isinstance(h, (int, float)) is False or h < 0:
-            raise ValueError
-        self.h = h
+    def __init__(self):
+        self.h = 0
 
-    def calc(self):
-        return 2*self.h + 0.3
+    @property
+    def dress_size(self):
+        return self.h
+
+    @dress_size.setter
+    def dress_size(self, h):
+        if isinstance(h, (int, float)) is False or h < 0:
+            raise ValueError('Некорректные данные!')
+        self.h = h
 
     def __str__(self):
         return f'Костюм. Расход: {self.calc():>.2f} кв. м.'
+
+    def calc(self):
+        return 2*self.h + 0.3
 
     def calc_print(self):
         return f'Расход {self.calc():>.2f} кв.м для роста {self.h}\n'
 
 
-coat1 = Coat(5)
+coat1 = Coat()
+coat1.dress_size = 5
 coat1.class_info()
 coat1.object_info()
 print(coat1.calc())
 print(coat1.calc_print())
 
-suit1 = Suit(2)
+suit1 = Suit()
+suit1.dress_size = 2
 suit1.class_info()
 suit1.object_info()
 print(suit1.calc())
